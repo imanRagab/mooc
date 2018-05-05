@@ -13,5 +13,7 @@ class User < ApplicationRecord
   #validations
   validates :gender, :date_of_birth, presence: true
 
+  #user associations
+  has_many :courses
 
 end
