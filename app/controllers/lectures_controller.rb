@@ -20,13 +20,27 @@ class LecturesController < InheritedResources::Base
 
     @lecture = Lecture.find(params[:id])
 
-    if current_user.voted_for? @lecture
+    #if user has liked the lecture
+    if current_user.voted_up_on? @lecture
       @lecture.unliked_by current_user
 
+    #if user hasn't liked it
     else
       @lecture.liked_by current_user
     
     end
+
+    redirect_to action: "show"
+
+  end
+
+  ###############################
+
+  def spam 
+
+    @lecture = Lecture.find(params[:id])
+
+    @lecture.disliked_by current_user
 
     redirect_to action: "show"
 

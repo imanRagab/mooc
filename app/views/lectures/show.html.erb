@@ -20,19 +20,32 @@
 <%= link_to 'Back', lectures_path %>
 <br>
 
-<% if current_user.voted_for? @lecture  %>
+<!-- if user hasn't liked the lecture -->
+
+<% if current_user.voted_up_on? @lecture %>
 <%= link_to 'Unlike', like_unlike_lecture_path(@lecture),:method => :post %> 
+
+<!-- if user hasn't liked the lecture or spammed it -->
+
+<% elsif not current_user.voted_down_on? @lecture %>
+<%= link_to 'Like', like_unlike_lecture_path(@lecture),:method => :post %>
+<%= link_to 'Mark as spam', spam_lecture_path(@lecture),:method => :post %>  
+
+<!-- if user has spammed the lecture -->
+
 <% else %>
-<%= link_to 'Like', like_unlike_lecture_path(@lecture),:method => :post %> 
+Marked as spam!
 <% end %>
 
 <%= @lecture.get_likes.size  %>
 
+<!-- display lecture comments -->
 <ul>
   <% @comments.each do |comment| %>
     <li><%= comment.text %></li>
   <% end %>
 </ul>
 
+<!-- display new comment form -->
 <%= render 'comment_form', lecture: @lecture %>
 

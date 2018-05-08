@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       post :like_unlike
     end
 
+    # spam route
+    member do
+      post :spam
+    end
+    
   end
 
   #######################
