@@ -15,5 +15,6 @@ class User < ApplicationRecord
 
   #user associations
   has_many :courses
+  has_many :comments
 
 end

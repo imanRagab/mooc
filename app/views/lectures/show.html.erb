@@ -18,3 +18,12 @@
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
 <%= link_to 'Back', lectures_path %>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.text %></li>
+  <% end %>
+</ul>
+
+<%= render 'comment_form', lecture: @lecture %>
+
