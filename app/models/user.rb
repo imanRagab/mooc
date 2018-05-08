@@ -11,7 +11,7 @@ class User < ApplicationRecord
   mount_uploader :profile_picture, ProfilePictureUploader
 
   #validations
-  validates :gender, :date_of_birth, presence: true
+  validates :name, :gender, :date_of_birth, presence: true
 
   #user associations
   has_many :courses

@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20180508155438) do
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "text"
+    t.text "text"
     t.integer "user_id"
     t.integer "lecture_id"
   end
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180508155438) do
   end
 
   create_table "lectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "content"
+    t.text "content"
     t.string "attachment"
     t.integer "course_id"
     t.datetime "created_at", null: false
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180508155438) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "name"
     t.date "date_of_birth"
     t.integer "gender"
     t.string "profile_picture"

@@ -2,7 +2,7 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @lecture.content %>
+  <%= raw(@lecture.content) %>
 </p>
 
 <p>
@@ -48,4 +48,6 @@ Marked as spam!
 
 <!-- display new comment form -->
 <%= render 'comment_form', lecture: @lecture %>
+
+
 
