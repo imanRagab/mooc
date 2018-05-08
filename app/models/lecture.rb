@@ -9,4 +9,7 @@ class Lecture < ApplicationRecord
     #lecture associations
     belongs_to :course
     has_many :comments
+
+    #make it votable to be liked/unliked
+    acts_as_votable
 end

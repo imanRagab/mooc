@@ -7,14 +7,15 @@ class CommentsController < InheritedResources::Base
   def create
 
     #1st find lecture
-    lecture = Lecture.find(params[:lecture_id])
+    @lecture = Lecture.find(params[:lecture_id])
 
     #create comment for this lecture adding current user id to parameters
-    @comment = lecture.comments.create!(params.require(:comment).permit!.merge(:user_id => current_user.id)) 
+    @comment = @lecture.comments.create!(params.require(:comment).permit!.merge(:user_id => current_user.id)) 
 
     @comment.save
 
-    redirect_to action: "show"
+    #return to show lecture
+    redirect_to proc { lecture_url(@lecture) }
   end
 
   ###############################

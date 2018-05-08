@@ -17,4 +17,7 @@ class User < ApplicationRecord
   has_many :courses
   has_many :comments
 
+  #make it voter to be able to like/unlike lectures
+  acts_as_voter
+
 end

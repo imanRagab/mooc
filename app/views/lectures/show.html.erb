@@ -18,6 +18,15 @@
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
 <%= link_to 'Back', lectures_path %>
+<br>
+
+<% if current_user.voted_for? @lecture  %>
+<%= link_to 'Unlike', like_unlike_lecture_path(@lecture),:method => :post %> 
+<% else %>
+<%= link_to 'Like', like_unlike_lecture_path(@lecture),:method => :post %> 
+<% end %>
+
+<%= @lecture.get_likes.size  %>
 
 <ul>
   <% @comments.each do |comment| %>

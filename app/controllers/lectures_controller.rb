@@ -15,7 +15,25 @@ class LecturesController < InheritedResources::Base
   end
 
   ###############################
-  
+
+  def like_unlike
+
+    @lecture = Lecture.find(params[:id])
+
+    if current_user.voted_for? @lecture
+      @lecture.unliked_by current_user
+
+    else
+      @lecture.liked_by current_user
+    
+    end
+
+    redirect_to action: "show"
+
+  end
+
+  ###############################
+
   private
 
     def lecture_params
