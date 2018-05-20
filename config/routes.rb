@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   #######################
   
   resources :courses do
-    # resources :lectures
+    #  resources :lectures
   end
 
   ##################################
@@ -32,4 +32,5 @@ Rails.application.routes.draw do
 
   #override devise register controller
   devise_for :users, :controllers => {:registrations => "users/registrations"}
+  
 end

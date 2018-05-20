@@ -1,8 +1,10 @@
 class LecturesController < InheritedResources::Base
 
+  before_action :authenticate_user!
+
   ###############################
 
-  def show 
+  def show
 
     @lecture = Lecture.find(params[:id])
 
@@ -11,7 +13,7 @@ class LecturesController < InheritedResources::Base
 
     #buid new comment for the new comment form
     @comment = @lecture.comments.build
-    
+
   end
 
   ###############################

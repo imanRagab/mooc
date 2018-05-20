@@ -10,6 +10,7 @@ ActiveAdmin.register User do
         column :gender
         column :date_of_birth
         column :profile_picture
+        column :instructor_role
         column :created_at
         actions
       end
@@ -23,6 +24,7 @@ ActiveAdmin.register User do
             row :gender
             row :date_of_birth
             row :profile_picture
+            row :instructor_role
             row :created_at
         end
     end
@@ -40,6 +42,7 @@ ActiveAdmin.register User do
             f.input :gender
             f.input :date_of_birth
             f.input :profile_picture
+            f.input :instructor_role
         end
         f.button :Submit
     end
@@ -50,9 +53,11 @@ ActiveAdmin.register User do
     filter :email 
     filter :gender 
     filter :created_at
+    filter :instructor_role
 
     #######################################
     #add permitted parameters
-    permit_params :list, :of, :attributes, :on, :model, :name, :email, :password, :password_confirmation, :gender, :profile_picture, :date_of_birth
+    permit_params :list, :of, :attributes, :on, :model, :name, :email, :password, :password_confirmation, 
+                                        :gender, :profile_picture, :date_of_birth, :instructor_role
 
 end
